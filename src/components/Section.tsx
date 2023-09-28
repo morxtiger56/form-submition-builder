@@ -14,7 +14,7 @@ export const SectionContainer: FC<ComponentPropsWithRef<"section">> = ({ childre
 SectionContainer.displayName = "SectionContainer"
 
 
-interface SectionHeaderProps extends ComponentPropsWithRef<"section"> {
+interface SectionHeaderProps extends ComponentPropsWithRef<"div"> {
     title: string
 }
 

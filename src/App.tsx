@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import { BiUpload } from 'react-icons/bi'
 import { IconContext } from 'react-icons'
 import { Label } from "./components/ui/label";
-import { IApplicationFormAttributes } from "./lib/types/applicationFormAttributes";
+import { IApplicationFormAttributes, IPersonalInformation, IProfile } from "./lib/types/applicationFormAttributes";
 import { FormField } from "./components/FormField.tsx";
 import { Button } from "./components/ui/button.tsx";
 import { GrFormAdd } from "react-icons/gr"
 import { capatlizeKeyString } from "./lib/utils.ts";
+import { IQuestionTemplate } from "./lib/types/questionTemplate.ts";
 
 
 const form: IApplicationFormAttributes = {
@@ -87,7 +88,7 @@ function App() {
 
     // Getting form section attributes and building the section fields dynamiclly form the inteface keys
 
-    function getAttributes(section: object) {
+    function getAttributes(section: IPersonalInformation| IProfile | IQuestionTemplate[] ) {
         const elements = []
         for (const key in section) {
             elements.push(
