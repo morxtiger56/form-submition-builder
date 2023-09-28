@@ -88,8 +88,11 @@ function App() {
 
     // Getting form section attributes and building the section fields dynamiclly form the inteface keys
 
-    function getAttributes(section: IPersonalInformation| IProfile | IQuestionTemplate[] ) {
+    function getAttributes(section: IQuestionTemplate[] | IProfile | IPersonalInformation | string) {
         const elements = []
+        if (typeof section === "string") {
+            return "Cannot pass a string"
+        }
         for (const key in section) {
             elements.push(
                 <FormField key={key + "personalInfo"} label={key} />
@@ -100,7 +103,7 @@ function App() {
 
     // Bulding all the sections from the inital form dynamiclly form the inteface keys
 
-    function sectionBuilder(form: object) {
+    function sectionBuilder(form: IApplicationFormAttributes) {
         const elements = []
         for (const key in form) {
 
@@ -113,7 +116,7 @@ function App() {
                     <SectionHeader title={capatlizeKeyString(key)} />
                     <SectionBody>
                         {
-                            getAttributes(form[key])
+                            getAttributes(form[key as keyof IApplicationFormAttributes])
                         }
                         <Button variant={"ghost"} className="mt-4 w-full items-center justify-start gap-1 px-0 py-6 text-start leading-tight">
                             <IconContext.Provider value={{ className: "text-4xl" }}>
