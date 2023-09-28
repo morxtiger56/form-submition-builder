@@ -2,9 +2,6 @@ import { SectionBody, SectionContainer, SectionHeader } from "./components/Secti
 import { ProgressHeader } from "./components/ProgressHeader";
 import { SideMenu } from "./components/SideMenu";
 import { useContext, useEffect } from "react";
-import { BiUpload } from 'react-icons/bi'
-import { IconContext } from 'react-icons'
-import { Label } from "./components/ui/label";
 import { IApplicationFormAttributes, IPersonalInformation, IProfile } from "./lib/types/applicationFormAttributes";
 import { FormField } from "./components/FormField.tsx";
 import { Button } from "./components/ui/button.tsx";
@@ -12,6 +9,8 @@ import { GrFormAdd } from "react-icons/gr"
 import { capatlizeKeyString } from "./lib/utils.ts";
 import { IQuestionTemplate } from "./lib/types/questionTemplate.ts";
 import { ContextProvider, FormContext } from "./components/ContextProvider.tsx";
+import { UploadImage } from "./components/UploadImage.tsx";
+import { IconContext } from "react-icons";
 
 
 async function getData() {
@@ -88,17 +87,7 @@ function Body() {
                 <SectionContainer>
                     <SectionHeader title="Upload cover image" />
                     <SectionBody>
-                        <div className="flex min-h-[200px] w-full flex-col items-center justify-center rounded-lg border-2 border-dashed border-black">
-                            <IconContext.Provider value={{ className: "text-3xl" }}>
-                                <BiUpload />
-                            </IconContext.Provider>
-                            <Label className="text-md font-semibold ">
-                                Upload cover image
-                            </Label>
-                            <p className="text-sm text-black/30 ">
-                                16:9 ratio is recommended. Max image size 1mb
-                            </p>
-                        </div>
+                        <UploadImage />
                     </SectionBody>
                 </SectionContainer>
                 {
