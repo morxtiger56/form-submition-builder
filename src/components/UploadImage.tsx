@@ -6,8 +6,8 @@ import { BiUpload } from "react-icons/bi";
 import { Button } from "./ui/button";
 
 export const UploadImage: FC = () => {
-    const [picture, setPicture] = useState<File | null>(null);
-    const [imgData, setImgData] = useState<string | ArrayBuffer | null>(null);
+    const [, setPicture] = useState<File | null>(null);
+    const [, setImgData] = useState<string | ArrayBuffer | null>(null);
     const [previewImage, setPreviewImage] = useState<string>("");
 
     const onChangePicture = (e: ChangeEvent<HTMLInputElement>) => {
